@@ -22,7 +22,7 @@ function Header() {
         )}
       >
         <div className="relative">
-          <div className="absolute top-[17px] left-[-60px]">
+          <div className="absolute top-[17px] left-[-40px]">
             <ModeToggle />
           </div>
           {isMenuOpen && (

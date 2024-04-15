@@ -10,12 +10,7 @@ function Container({
 }) {
   return (
     <>
-      <div
-        className={cn(
-          "border max-w-screen-xl mx-auto px-2.5 md:px-20",
-          className
-        )}
-      >
+      <div className={cn("max-w-screen-xl mx-auto px-2.5 md:px-20", className)}>
         {children}
       </div>
     </>
