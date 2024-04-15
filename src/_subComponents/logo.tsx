@@ -5,7 +5,7 @@ function Logo() {
   return (
     <>
       <div>
-        <a href="#">
+        <a href="/" className="select-none">
           <Image src="/pdflogo.png" alt="" width="70" height={70} />
         </a>
       </div>
