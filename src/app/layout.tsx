@@ -23,7 +23,12 @@ export default function RootLayout({
       <body
         className={cn("relative h-full font-sans antialiased", inter.className)}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          disableTransitionOnChange
+          enableSystem
+        >
           <main className=" relative flex flex-col min-h-screen ">
             <Header />
             <div className="flex-1 flex-grow px-2">{children}</div>
