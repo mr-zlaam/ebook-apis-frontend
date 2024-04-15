@@ -2,7 +2,8 @@
 import { Button } from "@/components/ui/button";
 
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
-  const linkClass: string = "transition-opacity duration-300 hover:opacity-70";
+  const linkClass: string =
+    "select-none transition-opacity duration-300 hover:opacity-70";
   return (
     <>
       <a onClick={handleCloseNavbar} href="#" className={linkClass}>
@@ -20,7 +21,7 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
       <Button
         onClick={handleCloseNavbar}
         variant="outline"
-        className="py-2 text-sm text-muted-foreground"
+        className="select-none  py-2 text-sm text-muted-foreground"
       >
         Sign In
       </Button>
