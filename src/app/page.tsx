@@ -1,7 +1,6 @@
 import Container from "@/_container/Container";
-import { Button } from "@/components/ui/button";
-import heroImage from "../../images/hero.jpg";
 import Image from "next/image";
+import heroImage from "../../images/hero.jpg";
 
 export default function Home() {
   //TODO:RESUME FROM HERE NEXT TIME
