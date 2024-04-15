@@ -5,6 +5,7 @@ import { useState } from "react";
 import MobileNavItems from "./MobileNavItems";
 import NavItems from "./NavItems";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/_theme/Theme";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleShowNavBar = () => {
@@ -16,7 +17,8 @@ function Header() {
   return (
     <>
       <header className="flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow">
-        <div className="">
+        <div className="flex flex-row-reverse items-center gap-5">
+          <ModeToggle />
           {isMenuOpen && (
             <X
               className="absolute left-10 z-50 text-foreground"

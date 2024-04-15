@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/_themeProvider/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -19,15 +20,22 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("text-[1rem] text-foreground bg-background dark")}
+      className={cn("text-[1rem] text-foreground bg-background ")}
     >
       <body
         className={cn("relative h-full font-sans antialiased", inter.className)}
       >
-        <main className=" relative flex flex-col min-h-screen ">
-          <Header />
-          <div className="flex-1 flex-grow">{children}</div>
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className=" relative flex flex-col min-h-screen ">
+            <Header />
+            <div className="flex-1 flex-grow">{children}</div>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
