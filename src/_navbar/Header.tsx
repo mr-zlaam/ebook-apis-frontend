@@ -10,6 +10,9 @@ function Header() {
   const handleShowNavBar = () => {
     setIsMenuOpen((prev) => !prev);
   };
+  const handleCloseNavbar = () => {
+    setIsMenuOpen(false);
+  };
   return (
     <>
       <header className="flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow">
@@ -21,7 +24,7 @@ function Header() {
                 setIsMenuOpen(false);
               }}
             />
-          )}{" "}
+          )}
           <Logo />
         </div>
         <nav className="hidden z-50 lg:flex lg:self-stretch  gap-10 items-center ">
@@ -31,6 +34,7 @@ function Header() {
           <Menu className="inline lg:hidden" onClick={handleShowNavBar} />
         )}
         <MobileNavItems
+          handleCloseNavbar={handleCloseNavbar}
           className={cn(
             !isMenuOpen
               ? "translate-y-[-120%] duration-300 "

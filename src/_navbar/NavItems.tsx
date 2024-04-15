@@ -1,22 +1,27 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import {} from "react";
 
-function NavItems() {
+function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
+  const linkClass: string = "transition-opacity duration-300 hover:opacity-70";
   return (
     <>
-      <a href="#" className="transition-opacity duration-300 hover:opacity-70">
+      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
         Home
       </a>
-      <a href="#" className="transition-opacity duration-300 hover:opacity-70">
+      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
         Books
       </a>
-      <a href="#" className="transition-opacity duration-300 hover:opacity-70">
+      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
         UploadBook
       </a>
-      <a href="#" className="transition-opacity duration-300 hover:opacity-70">
+      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
         About
       </a>
-      <Button variant="outline" className="py-2  text-sm text-muted-foreground">
+      <Button
+        onClick={handleCloseNavbar}
+        variant="outline"
+        className="py-2 text-sm text-muted-foreground"
+      >
         Sign In
       </Button>
     </>
