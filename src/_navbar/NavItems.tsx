@@ -1,23 +1,24 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
   const linkClass: string =
     "select-none transition-opacity duration-300 hover:opacity-70";
   return (
     <>
-      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
+      <Link onClick={handleCloseNavbar} href="/" className={linkClass}>
         Home
-      </a>
-      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
+      </Link>
+      <Link onClick={handleCloseNavbar} href="#" className={linkClass}>
         Books
-      </a>
-      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
+      </Link>
+      <Link onClick={handleCloseNavbar} href="#" className={linkClass}>
         UploadBook
-      </a>
-      <a onClick={handleCloseNavbar} href="#" className={linkClass}>
+      </Link>
+      <Link onClick={handleCloseNavbar} href="#" className={linkClass}>
         About
-      </a>
+      </Link>
       <Button
         onClick={handleCloseNavbar}
         variant="default"
