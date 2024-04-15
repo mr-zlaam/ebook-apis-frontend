@@ -16,12 +16,18 @@ function Header() {
   };
   return (
     <>
-      <header className="flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow">
-        <div className="flex flex-row-reverse items-center gap-5">
-          <ModeToggle />
+      <header
+        className={cn(
+          "flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow "
+        )}
+      >
+        <div className="relative">
+          <div className="absolute top-4 left-[-40px]">
+            <ModeToggle />
+          </div>
           {isMenuOpen && (
             <X
-              className="absolute left-10 z-50 text-foreground"
+              className=" lg:hidden absolute top-5 right-25 z-50 text-foreground"
               onClick={() => {
                 setIsMenuOpen(false);
               }}
@@ -38,6 +44,7 @@ function Header() {
         <MobileNavItems
           handleCloseNavbar={handleCloseNavbar}
           className={cn(
+            "lg:hidden",
             !isMenuOpen
               ? "translate-y-[-120%] duration-300 "
               : "translate-y-0 duration-300"
@@ -46,7 +53,7 @@ function Header() {
         {isMenuOpen && (
           <div
             onClick={() => setIsMenuOpen(false)}
-            className="before:content[''] before:absolute before:top-0 before:left-0 before:h-screen before:w-full before:bg-black/30 before:backdrop-blur-sm"
+            className="lg:hidden before:content[''] before:absolute before:top-0 before:left-0 before:h-screen before:w-full before:bg-black/30 before:backdrop-blur-sm"
           />
         )}
       </header>

@@ -20,8 +20,8 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
       </a>
       <Button
         onClick={handleCloseNavbar}
-        variant="outline"
-        className="select-none  py-2 text-sm text-muted-foreground"
+        variant="default"
+        className="select-none  py-2 text-sm text-white"
       >
         Sign In
       </Button>
