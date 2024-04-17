@@ -4,13 +4,17 @@ import heroSectionImage from "../../images/hero.jpg";
 
 export default function Home() {
   //TODO:RESUME FROM HERE NEXT TIME
+  const image =
+    "https://cdn.pixabay.com/photo/2023/11/30/01/38/vietnam-8420600_1280.jpg";
   return (
     <Container className="mt-2 flex flex-col items-center justify-center ">
       <div className="h-[87vh] md:h-[90vh] overflow-x-hidden">
         <Image
           className="rounded-lg object-cover h-[75%] md:h-[79%] w-full overflow-x-hidden md:drop-shadow-xl select-none "
-          src={heroSectionImage}
+          src={image}
           alt="hero"
+          width={1000}
+          height={1000}
         />
         <h1 className="font-bold text md:text-5xl lg:text-7xl text-start lg:ml-16 text-4xl   ">
           UNLEASH THE POWER OF IMAGINATION.
