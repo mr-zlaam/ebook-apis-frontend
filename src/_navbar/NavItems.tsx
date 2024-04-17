@@ -10,13 +10,17 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
       <Link onClick={handleCloseNavbar} href="/" className={linkClass}>
         Home
       </Link>
-      <Link onClick={handleCloseNavbar} href="#" className={linkClass}>
+      <Link onClick={handleCloseNavbar} href="/books" className={linkClass}>
         Books
       </Link>
-      <Link onClick={handleCloseNavbar} href="#" className={linkClass}>
+      <Link
+        onClick={handleCloseNavbar}
+        href="/uploadBook"
+        className={linkClass}
+      >
         UploadBook
       </Link>
-      <Link onClick={handleCloseNavbar} href="#" className={linkClass}>
+      <Link onClick={handleCloseNavbar} href="/about" className={linkClass}>
         About
       </Link>
       <Button
