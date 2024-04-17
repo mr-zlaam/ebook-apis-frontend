@@ -5,8 +5,9 @@ function Banner() {
   return (
     <>
       <div className="md:h-[200px] h-fit bg-white/80  rounded-md border flex items-center px-2 justify-around my-2 shadow flex-col md:flex-row  ">
-        <h1 className="md:text-4xl font-bold text-black md:text-balance text-2xl text-center">
-          Connect, Share and Trade Your <br className="hidden lg:block" />
+        <h1 className="md:text-4xl font-bold text-black md:text-balance text-2xl lg:text-left text-center">
+          Connect, Share and Trade Your{" "}
+          <br className="hidden lg:inline-block" />
           Favorite Reads...
         </h1>
         <Image src={bannerImg} alt="book" width={180} height={180} />

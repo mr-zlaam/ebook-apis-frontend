@@ -8,7 +8,7 @@ function Books() {
     <>
       <Container className="my-4">
         <Banner />
-        {/* <BookList /> */}
+        <BookList />
       </Container>
     </>
   );
