@@ -1,5 +1,5 @@
 import Container from "@/_container/Container";
-import Banner from "./components/Banner";
+import Banner from "./components/banner/Banner";
 import {} from "react";
 
 function Books() {
