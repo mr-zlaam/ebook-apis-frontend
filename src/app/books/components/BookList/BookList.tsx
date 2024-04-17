@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils";
 import { BookTypes } from "@/types";
 import Image from "next/image";
-
+//TODO: Resume from here
 const fetchBookList = async () => {
   const response = await fetch(`http://localhost:5173/api/books`);
   const data = await response.json();
   return data;
 };
+
 async function BookList() {
   // const { BACKEND_URI } = process.env;
   const data = await fetchBookList();
