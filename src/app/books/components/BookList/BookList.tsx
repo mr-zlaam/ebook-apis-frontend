@@ -1,24 +1,34 @@
+import { cn } from "@/lib/utils";
 import { BookTypes } from "@/types";
-import React, { Fragment } from "react";
+import Image from "next/image";
 
-const fetchBookList = async (url: string) => {
-  const response = await fetch(`${url}/books`);
+const fetchBookList = async () => {
+  const response = await fetch(`http://localhost:5173/api/books`);
   const data = await response.json();
   return data;
 };
 async function BookList() {
-  const { BACKEND_URI } = process.env;
-  const data = await fetchBookList(BACKEND_URI as string);
+  // const { BACKEND_URI } = process.env;
+  const data = await fetchBookList();
   const { data: bookData } = data;
-  const cardClass = "rounded-lg h-[250px] w-[280px] border border-black";
   console.log(bookData);
+  const cardClass = "rounded-lg h-[250px] w-[380px]  ";
   return (
     <>
       <section className="md:grid md:grid-cols-2 md:gap-5 lg:grid lg:grid-cols-3 lg:gap-10 grid grid-col-1 gap-3 justify-center">
         {bookData.books.map((book: BookTypes) => {
           return (
-            <div className={cardClass} key={book?._id}>
-              <h1>{book.title}</h1>
+            <div
+              className={cn("shadow-black/30  shadow-md flex", cardClass)}
+              key={book?._id}
+            >
+              <Image
+                src={book?.coverImage}
+                alt={book?.author?.displayName}
+                height={100}
+                width={100}
+              />
+              <h1>{book.author.displayName}</h1>
             </div>
           );
         })}
