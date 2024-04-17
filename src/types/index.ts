@@ -1,7 +1,11 @@
+interface AuthorTypes {
+  _id: string;
+  displayName: string;
+}
 export interface BookTypes {
   _id: string;
   title: string;
-  author: string;
+  author: AuthorTypes;
   coverImage: string;
   file: string;
   genre: string;
