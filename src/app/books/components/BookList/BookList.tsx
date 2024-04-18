@@ -2,7 +2,8 @@ import { cn } from "@/lib/utils";
 import { BookTypes } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-//TODO: Resume from here
+import useNextBlurhash from "use-next-blurhash";
+
 const fetchBookList = async (BACKEND_URI: string) => {
   try {
     const response = await fetch(`${BACKEND_URI}/books`, {
@@ -18,6 +19,7 @@ const fetchBookList = async (BACKEND_URI: string) => {
 };
 
 async function BookList() {
+  const [blurDataUrl] = useNextBlurhash("L98;Z5kVXUIU.TogENM{9tjExuR*"); //TODO:if this line create issue during the build process then remove it
   const { BACKEND_URI } = process.env;
   const data = await fetchBookList(BACKEND_URI as string);
   const { data: bookData } = data;
@@ -28,6 +30,7 @@ async function BookList() {
       </h1>
     );
   }
+
   return (
     <>
       <section
@@ -48,6 +51,9 @@ async function BookList() {
                 height={0}
                 width={0}
                 sizes="100vw"
+                priority
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
                 style={{ width: "auto", height: "14rem" }}
               />
               <div className="flex-1 flex flex-col items-center justify-center ">

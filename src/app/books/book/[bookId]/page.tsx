@@ -1,5 +1,7 @@
 import Container from "@/_container/Container";
 import { BookTypes } from "@/types";
+import useNextBlurhash from "use-next-blurhash";
+
 import Image from "next/image";
 import {} from "react";
 import ReadLink from "../../components/readBook/ReadLink";
@@ -22,6 +24,8 @@ const fetchSignleBook = async (bookid: string) => {
   }
 };
 async function BookIdPage({ params }: { params: { bookId: string } }) {
+  const [blurDataUrl] = useNextBlurhash("L98;Z5kVXUIU.TogENM{9tjExuR*"); //TODO:if this line create issue during the build process then remove it
+
   let singleBook = null;
   try {
     singleBook = await fetchSignleBook(params.bookId);
@@ -51,6 +55,8 @@ async function BookIdPage({ params }: { params: { bookId: string } }) {
                 alt="book cover"
                 width={500}
                 height={500}
+                blurDataURL={blurDataUrl}
+                placeholder="blur"
               />
             )}
           </div>
