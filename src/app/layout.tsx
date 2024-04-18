@@ -1,12 +1,15 @@
 import { ThemeProvider } from "@/_themeProvider/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fugaz_One } from "next/font/google";
 import "./globals.css";
 import Header from "@/_navbar/Header";
-
 const inter = Inter({ subsets: ["latin"] });
-
+const Fugaz = Fugaz_One({
+  subsets: ["latin"],
+  variable: "--font-fugaz",
+  weight: ["400"],
+});
 export const metadata: Metadata = {
   title: "EBook Store",
   description:
@@ -21,7 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="text-[1rem] text-foreground bg-background">
       <body
-        className={cn("relative h-full font-sans antialiased", inter.className)}
+        className={cn(
+          "relative h-full font-sans antialiased",
+          inter.className,
+          Fugaz.variable
+        )}
       >
         <ThemeProvider
           attribute="class"

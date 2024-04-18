@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { BookTypes } from "@/types";
+import { Fugaz_One } from "next/font/google";
 import Image from "next/image";
 //TODO: Resume from here
 const fetchBookList = async (BACKEND_URI: string) => {
@@ -17,7 +18,7 @@ async function BookList() {
   const cardClass = "rounded-lg h-[250px] w-[380px]  ";
   if (bookData?.books.length === 0) {
     return (
-      <h1 className="h-[300px]  flex justify-center items-center text-4xl font-bold text-red-500">
+      <h1 className="h-[300px]  flex justify-center items-center text-4xl font-bold text-red-500 font-fugaz">
         No result Found!
       </h1>
     );

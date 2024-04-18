@@ -10,9 +10,6 @@ const config = {
   ],
   prefix: "",
   theme: {
-    fontFamily: {
-      cursive: ["cursive"],
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -21,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        fugaz: ["var(--font-fugaz)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
