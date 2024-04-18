@@ -9,4 +9,8 @@ export interface BookTypes {
   coverImage: string;
   file: string;
   genre: string;
+  description: string;
+  bookAuthor: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

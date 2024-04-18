@@ -51,7 +51,7 @@ async function BookList() {
                 <h1 className="flex gap-3 items-center">
                   <span className="font-bold text-sm">By: </span>
                   <span className="font-fugaz text-orang-800 text-md text-orange-800">
-                    {book.author.displayName}
+                    {book.bookAuthor}
                   </span>
                 </h1>
                 <h1 className="flex gap-3 items-center">
