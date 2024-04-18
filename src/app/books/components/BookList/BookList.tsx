@@ -4,11 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 //TODO: Resume from here
 const fetchBookList = async (BACKEND_URI: string) => {
-  const response = await fetch(`${BACKEND_URI}/books`, {
-    cache: "no-store",
-  });
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(`${BACKEND_URI}/books`, {
+      cache: "no-store",
+    });
+    const data = await response.json();
+    if (!response.ok) {
+    }
+    return data;
+  } catch (error: any) {
+    console.log(error.message);
+  }
 };
 
 async function BookList() {
@@ -62,7 +68,7 @@ async function BookList() {
                 </h1>
 
                 <Link
-                  href={`#`}
+                  href={`books/book/${book?._id}`}
                   className="text-blue-800 hover:underline font-bold"
                 >
                   Read more...
