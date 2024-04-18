@@ -21,8 +21,12 @@ const fetchSignleBook = async (bookid: string) => {
   }
 };
 async function BookIdPage({ params }: { params: { bookId: string } }) {
-  // const singleBook = await fetchSignleBook(params.bookId);
-  // console.log(singleBook);
+  let singleBook = null;
+  try {
+    singleBook = await fetchSignleBook(params.bookId);
+  } catch (error: any) {
+    console.log(error.message);
+  }
   return (
     <>
       <Container className="mt-5">
@@ -50,23 +54,19 @@ async function BookIdPage({ params }: { params: { bookId: string } }) {
           </div>
 
           <div className="flex-1">
-            <Image
-              className="rounded"
-              src={
-                "https://res.cloudinary.com/dd0zhxb3i/image/upload/v1713433935/book-covers/l3zfvqvjtfkkdzvytwdo.jpg"
-              }
-              alt="book cover"
-              width={500}
-              height={500}
-            />
+            {singleBook?.coverImage && (
+              <Image
+                className="rounded"
+                src={singleBook.coverImage}
+                alt="book cover"
+                width={500}
+                height={500}
+              />
+            )}
           </div>
         </div>
         <div className="w-fit mx-auto">
-          <ReadLink
-            file={
-              "https://res.cloudinary.com/dd0zhxb3i/raw/upload/v1713433936/book-pdfs/smvdlu0lp2ja95cfzrce.pdf"
-            }
-          />
+          {singleBook?.file && <ReadLink file={singleBook.file} />}
         </div>
       </Container>
     </>

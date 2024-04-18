@@ -5,9 +5,7 @@ import Link from "next/link";
 //TODO: Resume from here
 const fetchBookList = async (BACKEND_URI: string) => {
   try {
-    const response = await fetch(`${BACKEND_URI}/books`, {
-      cache: "no-store",
-    });
+    const response = await fetch(`${BACKEND_URI}/books`);
     const data = await response.json();
     if (!response.ok) {
     }
