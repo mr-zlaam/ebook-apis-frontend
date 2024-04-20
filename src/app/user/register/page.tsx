@@ -1,11 +1,11 @@
 import {} from "react";
-import Form from "../components/form";
+import RegisterForm from "../components/registerForm";
 
 function Register() {
   return (
     <>
       <section>
-        <Form />
+        <RegisterForm />
       </section>
     </>
   );

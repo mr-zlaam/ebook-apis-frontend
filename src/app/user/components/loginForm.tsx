@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/lable";
+import Link from "next/link";
 import {} from "react";
 
-function Form() {
+function LoginForm() {
   return (
     <>
       <section className="relative top-20">
@@ -15,14 +16,6 @@ function Form() {
                   Sign in
                 </h1>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="username">Username</Label>
-                  <Input type="text" id="username" placeholder="john_doe" />
-                </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="fullname">Full Name</Label>
-                  <Input type="text" id="fullname" placeholder="John Doe" />
-                </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="email">Email</Label>
                   <Input type="email" id="email" placeholder="john@mail.com" />
                 </div>
@@ -30,12 +23,20 @@ function Form() {
                   <Label htmlFor="password">Password</Label>
                   <Input type="password" id="password" placeholder="••••••••" />
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="confirm">Confirm Password</Label>
-                  <Input type="password" id="confirm" placeholder="••••••••" />
+                <div>
+                  <p className="text-center text-sm ">
+                    Don&apos;t have an Account ?
+                    <Link
+                      href="/user/register"
+                      className="text-blue-500 hover:underline"
+                    >
+                      {"  "}
+                      Register
+                    </Link>
+                  </p>
                 </div>
                 <Button className="w-full bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  focus:ring-blue-800 text-white">
-                  Sign Up
+                  Sign in
                 </Button>
               </div>
             </div>
@@ -46,4 +47,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default LoginForm;

@@ -1,11 +1,11 @@
 import {} from "react";
-import Form from "../components/form";
+import LoginForm from "../components/loginForm";
 
 function Login() {
   return (
     <>
       <section>
-        <Form />
+        <LoginForm />
       </section>
     </>
   );
