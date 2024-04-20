@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/lable";
+import Link from "next/link";
 import {} from "react";
 
 function RegisterForm() {
@@ -34,6 +35,17 @@ function RegisterForm() {
                   <Label htmlFor="confirm">Confirm Password</Label>
                   <Input type="password" id="confirm" placeholder="••••••••" />
                 </div>
+
+                <p className="text-center text-sm ">
+                  Already have an Account ?
+                  <Link
+                    href="/user/login"
+                    className="text-blue-500 hover:underline"
+                  >
+                    {"  "}
+                    Login
+                  </Link>
+                </p>
                 <Button className="w-full bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  focus:ring-blue-800 text-white">
                   Sign Up
                 </Button>

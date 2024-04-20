@@ -23,18 +23,18 @@ function LoginForm() {
                   <Label htmlFor="password">Password</Label>
                   <Input type="password" id="password" placeholder="••••••••" />
                 </div>
-                <div>
-                  <p className="text-center text-sm ">
-                    Don&apos;t have an Account ?
-                    <Link
-                      href="/user/register"
-                      className="text-blue-500 hover:underline"
-                    >
-                      {"  "}
-                      Register
-                    </Link>
-                  </p>
-                </div>
+
+                <p className="text-center text-sm ">
+                  Don&apos;t have an Account ?
+                  <Link
+                    href="/user/register"
+                    className="text-blue-500 hover:underline"
+                  >
+                    {"  "}
+                    Register
+                  </Link>
+                </p>
+
                 <Button className="w-full bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  focus:ring-blue-800 text-white">
                   Sign in
                 </Button>
