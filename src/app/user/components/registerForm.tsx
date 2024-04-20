@@ -13,7 +13,7 @@ function RegisterForm() {
             <div className="w-full bg-background rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-foreground md:text-2xl">
-                  Sign in
+                  Create an Account
                 </h1>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="username">Username</Label>
@@ -46,7 +46,7 @@ function RegisterForm() {
                     Login
                   </Link>
                 </p>
-                <Button className="w-full bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  focus:ring-blue-800 text-white">
+                <Button className="w-full bg-blue-500 duration-200 text-white transition-all hover:bg-blue-700 ">
                   Sign Up
                 </Button>
               </div>
