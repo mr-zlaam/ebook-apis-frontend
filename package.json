@@ -24,7 +24,8 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
-    "use-next-blurhash": "^1.0.5"
+    "use-next-blurhash": "^1.0.5",
+    "zod": "^3.23.4"
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",

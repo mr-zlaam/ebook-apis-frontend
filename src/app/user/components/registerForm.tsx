@@ -17,7 +17,8 @@ function RegisterForm() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  const handleRegisterSubmit = async () => {
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     const { username, confirmPassword, email, fullname, password } = formData;
     try {
       if (!username || !confirmPassword || !password || !email || !fullname)
@@ -80,7 +81,7 @@ function RegisterForm() {
                   <Label htmlFor="confirm">Confirm Password</Label>
                   <Input
                     type="password"
-                    name="confirm"
+                    name="confirmPassword"
                     id="confirm"
                     placeholder="••••••••"
                     onChange={(e) => handleChange(e)}
