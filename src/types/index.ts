@@ -22,3 +22,7 @@ export interface UserRegisterTypes {
   password: string;
   confirmPassword: string;
 }
+export interface UserLoginTypes {
+  email: string;
+  password: string;
+}

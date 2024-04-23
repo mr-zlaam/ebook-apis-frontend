@@ -1,5 +1,5 @@
-import { UserRegisterTypes } from "@/types";
-import { ZodType, object, string } from "zod";
+import type { UserLoginTypes, UserRegisterTypes } from "@/types";
+import { type ZodType, object, string } from "zod";
 
 export const registerSchema: ZodType<UserRegisterTypes> = object({
   username: string()
@@ -30,4 +30,18 @@ export const registerSchema: ZodType<UserRegisterTypes> = object({
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Confirmpassword is not same as passwords",
   path: ["confirmPassword"],
+});
+
+export const loginSchema: ZodType<UserLoginTypes> = object({
+  email: string()
+    .email()
+    .min(5, { message: "This field requires at least 5 characters" })
+    .max(20, { message: "Email is too long" })
+    .regex(new RegExp(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/), {
+      message: "Please provide valid email",
+    })
+    .toLowerCase(),
+  password: string()
+    .min(6, { message: "This field requires at least 6 characters" })
+    .max(20, { message: "Password is too long" }),
 });
