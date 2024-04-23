@@ -2,27 +2,19 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/lable";
+import type { UserRegisterTypes } from "@/types";
+import { registerSchema } from "@/validation/postSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useState } from "react";
-
+import { useForm } from "react-hook-form";
 function RegisterForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    fullname: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-  const handleRegisterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const { username, confirmPassword, email, fullname, password } = formData;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<UserRegisterTypes>({ resolver: zodResolver(registerSchema) });
+  const handleRegisterSubmit = async (data: UserRegisterTypes) => {
     try {
-      if (!username || !confirmPassword || !password || !email || !fullname)
-        return alert("all fields are required");
     } catch (error: any) {
       console.log(error.message);
     }
@@ -30,7 +22,7 @@ function RegisterForm() {
   return (
     <>
       <section className="relative top-20">
-        <form onSubmit={handleRegisterSubmit}>
+        <form onSubmit={handleSubmit(handleRegisterSubmit)}>
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
             <div className="w-full bg-background rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -40,52 +32,72 @@ function RegisterForm() {
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="username">Username</Label>
                   <Input
+                    {...register("username")}
                     type="text"
-                    id="username"
-                    name="username"
                     placeholder="john_doe"
-                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.username && (
+                    <span className="text-xs text-red-500">
+                      {" "}
+                      {errors.username.message}{" "}
+                    </span>
+                  )}
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="fullname">Full Name</Label>
                   <Input
+                    {...register("fullname")}
                     type="text"
-                    id="fullname"
-                    name="fullname"
                     placeholder="John Doe"
-                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.fullname && (
+                    <span className="text-xs text-red-500">
+                      {" "}
+                      {errors.fullname.message}{" "}
+                    </span>
+                  )}
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="email">Email</Label>
                   <Input
+                    {...register("email")}
                     type="email"
-                    name="email"
-                    id="email"
                     placeholder="john@mail.com"
-                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.email && (
+                    <span className="text-xs text-red-500">
+                      {" "}
+                      {errors.email.message}{" "}
+                    </span>
+                  )}
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="password">Password</Label>
                   <Input
+                    {...register("password")}
                     type="password"
-                    name="password"
-                    id="password"
                     placeholder="••••••••"
-                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.password && (
+                    <span className="text-xs text-red-500">
+                      {" "}
+                      {errors.password.message}{" "}
+                    </span>
+                  )}
                 </div>
                 <div className="grid w-full max-w-sm items-center gap-1.5">
                   <Label htmlFor="confirm">Confirm Password</Label>
                   <Input
+                    {...register("confirmPassword")}
                     type="password"
-                    name="confirmPassword"
-                    id="confirm"
                     placeholder="••••••••"
-                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.confirmPassword && (
+                    <span className="text-xs text-red-500">
+                      {" "}
+                      {errors.confirmPassword.message}{" "}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-center text-sm ">

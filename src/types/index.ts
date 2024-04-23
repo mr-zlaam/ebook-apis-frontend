@@ -14,3 +14,11 @@ export interface BookTypes {
   createdAt: Date;
   updatedAt: Date;
 }
+// User Register Types
+export interface UserRegisterTypes {
+  username: string;
+  fullname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
