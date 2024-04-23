@@ -40,7 +40,7 @@ function LoginForm() {
                     placeholder="john@mail.com"
                   />
                   {errors.email && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                    <p className="text-xs select-none text-red-500  text-balance ml-2">
                       {errors.email.message}
                     </p>
                   )}
@@ -54,7 +54,7 @@ function LoginForm() {
                     placeholder="••••••••"
                   />
                   {errors.password && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                    <p className="text-xs select-none text-red-500  text-balance ml-2">
                       {errors.password.message}
                     </p>
                   )}

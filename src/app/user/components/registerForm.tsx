@@ -29,8 +29,10 @@ function RegisterForm() {
                 <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-foreground md:text-2xl">
                   Create an Account
                 </h1>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="username">Username</Label>
+                <div className="grid w-full max-w-sm items-center">
+                  <Label className="mb-1" htmlFor="username">
+                    Username
+                  </Label>
                   <Input
                     autoCapitalize="off"
                     {...register("username")}
@@ -38,67 +40,85 @@ function RegisterForm() {
                     placeholder="john_doe"
                     id="username"
                   />
-                  {errors.username && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
-                      {errors.username.message}
-                    </p>
-                  )}
+                  <p className="h-[15px]">
+                    {errors.username && (
+                      <span className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                        {errors.username.message}
+                      </span>
+                    )}
+                  </p>
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="fullname">Full Name</Label>
+                <div className="grid w-full max-w-sm items-center">
+                  <Label className="mb-1" htmlFor="fullname">
+                    Full Name
+                  </Label>
                   <Input
                     {...register("fullname")}
                     type="text"
                     placeholder="John Doe"
                     id="fullname"
                   />
-                  {errors.fullname && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
-                      {errors.fullname.message}
-                    </p>
-                  )}
+                  <p className="h-[15px]">
+                    {errors.fullname && (
+                      <span className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                        {errors.fullname.message}
+                      </span>
+                    )}
+                  </p>
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="email">Email</Label>
+                <div className="grid w-full max-w-sm items-center">
+                  <Label className="mb-1" htmlFor="email">
+                    Email
+                  </Label>
                   <Input
                     {...register("email")}
                     type="email"
                     placeholder="john@mail.com"
                     id="email"
                   />
-                  {errors.email && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
-                      {errors.email.message}
-                    </p>
-                  )}
+                  <p className="h-[15px]">
+                    {errors.email && (
+                      <span className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                        {errors.email.message}
+                      </span>
+                    )}
+                  </p>
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="password">Password</Label>
+                <div className="grid w-full max-w-sm items-center">
+                  <Label className="mb-1" htmlFor="password">
+                    Password
+                  </Label>
                   <Input
                     {...register("password")}
                     type="password"
                     placeholder="••••••••"
                     id="password"
                   />
-                  {errors.password && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
-                      {errors.password.message}
-                    </p>
-                  )}
+                  <p className="h-[15px]">
+                    {errors.password && (
+                      <span className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                        {errors.password.message}
+                      </span>
+                    )}
+                  </p>
                 </div>
-                <div className="grid w-full max-w-sm items-center gap-1.5">
-                  <Label htmlFor="confirm">Confirm Password</Label>
+                <div className="grid w-full max-w-sm items-center">
+                  <Label className="mb-1" htmlFor="confirm">
+                    Confirm Password
+                  </Label>
                   <Input
                     {...register("confirmPassword")}
                     type="password"
                     placeholder="••••••••"
                     id="confirm"
                   />
-                  {errors.confirmPassword && (
-                    <p className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
-                      {errors.confirmPassword.message}{" "}
-                    </p>
-                  )}
+                  <p className="h-[15px]">
+                    {errors.confirmPassword && (
+                      <span className="text-xs select-none text-red-500 h-[15px] text-balance ml-2">
+                        {errors.confirmPassword.message}
+                      </span>
+                    )}
+                  </p>
                 </div>
 
                 <p className="text-center text-sm ">
