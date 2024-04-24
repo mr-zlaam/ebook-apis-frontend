@@ -1,8 +1,11 @@
 "use client";
+import ButtonLoader from "@/_subComponents/buttonLoader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/lable";
+import { useLoading } from "@/hooks/useLoading";
 import { useMessage } from "@/hooks/useMessage";
+import { cn } from "@/lib/utils";
 import type { UserRegisterTypes } from "@/types";
 import { registerSchema } from "@/validation/postSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +14,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 function RegisterForm() {
   const { errorMessage, successMessage } = useMessage();
+  const { isLoading, startLoading, stopLoading } = useLoading();
   const {
     register,
     reset,
@@ -20,6 +24,7 @@ function RegisterForm() {
   const handleRegisterSubmit = async (data: UserRegisterTypes) => {
     const { username, fullname, email, password } = data;
     try {
+      startLoading();
       const response = await axios.post(
         `http://localhost:5173/api/users/register`,
         {
@@ -34,12 +39,14 @@ function RegisterForm() {
           },
         }
       );
+      stopLoading();
       if (response.data.message === "OK") {
         reset();
         successMessage("User Registered successfully.");
       }
       console.log(response.data);
     } catch (error: any) {
+      stopLoading();
       errorMessage(error.response.data.message);
     }
   };
@@ -151,12 +158,18 @@ function RegisterForm() {
                     href="/user/login"
                     className="text-blue-500 hover:underline"
                   >
-                    {"  "}
-                    Login
+                    <span>&nbsp; Login</span>
                   </Link>
                 </p>
-                <Button className="w-full  duration-200 text-white transition-all hover:bg-blue-700 ">
-                  Sign Up
+                <Button
+                  disabled={isLoading}
+                  type="submit"
+                  className={cn(
+                    "w-full  duration-200 text-white transition-all hover:bg-blue-700",
+                    isLoading && "cursor-not-allowed"
+                  )}
+                >
+                  {isLoading ? <ButtonLoader /> : <span>Register</span>}
                 </Button>
               </div>
             </div>
