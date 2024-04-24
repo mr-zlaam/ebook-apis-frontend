@@ -17,6 +17,7 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   };
   const handleLogout = async () => {
     await DeleteBiscuitCookie("accessToken");
+    return goToSignInPage();
   };
   return (
     <>
