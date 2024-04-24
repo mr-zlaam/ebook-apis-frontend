@@ -8,3 +8,6 @@ export async function BiscuitCookie(token: string) {
     httpOnly: true,
   });
 }
+export async function DeleteBiscuitCookie(tokenName: string) {
+  cookies().delete(tokenName);
+}

@@ -2,14 +2,19 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { DeleteBiscuitCookie } from "@/hooks/useCookies";
 
+const linkClass: string =
+  "select-none transition-opacity duration-300 hover:opacity-70";
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   const router = useRouter();
-  const linkClass: string =
-    "select-none transition-opacity duration-300 hover:opacity-70";
+
   const goToSignInPage = () => {
     router.push("/user/login");
     return handleCloseNavbar();
+  };
+  const handleLogout = async () => {
+    await DeleteBiscuitCookie("accessToken");
   };
   return (
     <>
