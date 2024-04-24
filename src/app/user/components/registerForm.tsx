@@ -31,7 +31,7 @@ function RegisterForm() {
     try {
       startLoading();
       const response = await axios.post(
-        `http://localhost:5173/api/users/register`,
+        `${process.env.BACKEND_URI}users/register`,
         {
           username,
           displayName: fullname,

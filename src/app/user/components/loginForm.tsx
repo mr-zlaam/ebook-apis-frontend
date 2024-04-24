@@ -18,6 +18,7 @@ function LoginForm() {
   const router = useRouter();
   const { errorMessage, successMessage } = useMessage();
   const { isLoading, startLoading, stopLoading } = useLoading();
+  console.log(process.env.BACKEND_URI);
   const {
     register,
     handleSubmit,
@@ -26,10 +27,11 @@ function LoginForm() {
   } = useForm<UserLoginTypes>({ resolver: zodResolver(loginSchema) });
   const handleLoginSubmit = async (data: UserLoginTypes) => {
     const { email, password } = data;
+
     try {
       startLoading();
       const response = await axios.post(
-        `http://localhost:5173/api/users/login`,
+        `${process.env.BACKEND_URI}/users/login`,
         {
           email,
           password,
