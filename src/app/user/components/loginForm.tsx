@@ -111,7 +111,7 @@ function LoginForm() {
                 <Button
                   className={cn(
                     "text-white w-full bg-blue-500 duration-200 transition-all hover:bg-blue-700",
-                    isLoading && "cursor-not-allowed"
+                    isLoading && "cursor-not-allowed hover:bg-blue-500"
                   )}
                 >
                   {isLoading ? <ButtonLoader /> : <span>Sign in</span>}
