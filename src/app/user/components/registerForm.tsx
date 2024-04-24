@@ -5,16 +5,37 @@ import { Label } from "@/components/ui/lable";
 import type { UserRegisterTypes } from "@/types";
 import { registerSchema } from "@/validation/postSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 function RegisterForm() {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<UserRegisterTypes>({ resolver: zodResolver(registerSchema) });
   const handleRegisterSubmit = async (data: UserRegisterTypes) => {
+    const { username, fullname, email, password } = data;
     try {
+      const response = await axios.post(
+        `http://localhost:5173/api/users/register`,
+        {
+          username,
+          displayName: fullname,
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.data.message === "OK") {
+        reset();
+      }
+      console.log(response.data);
     } catch (error: any) {
       console.log(error.message);
     }
