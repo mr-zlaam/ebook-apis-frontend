@@ -8,17 +8,47 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import {} from "react";
 import { useForm } from "react-hook-form";
-
+import { BiscuitCookie } from "@/hooks/useCookies";
+import { useMessage } from "@/hooks/useMessage";
+import { useLoading } from "@/hooks/useLoading";
+import axios from "axios";
+import ButtonLoader from "@/_subComponents/buttonLoader";
+import { cn } from "@/lib/utils";
 function LoginForm() {
+  const { errorMessage, successMessage } = useMessage();
+  const { isLoading, startLoading, stopLoading } = useLoading();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<UserLoginTypes>({ resolver: zodResolver(loginSchema) });
   const handleLoginSubmit = async (data: UserLoginTypes) => {
+    const { email, password } = data;
     try {
+      startLoading();
+      const response = await axios.post(
+        `http://localhost:5173/api/users/login`,
+        {
+          email,
+          password,
+        },
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      stopLoading();
+      if (response.data.message === "OK") {
+        reset();
+        successMessage("login successfully.");
+      }
+      await BiscuitCookie(response.data?.accessToken);
     } catch (error: any) {
-      console.log(error.message);
+      stopLoading();
+      console.log(error);
     }
   };
   return (
@@ -71,8 +101,13 @@ function LoginForm() {
                   </Link>
                 </p>
 
-                <Button className="text-white w-full bg-blue-500 duration-200 transition-all hover:bg-blue-700 ">
-                  Sign In
+                <Button
+                  className={cn(
+                    "text-white w-full bg-blue-500 duration-200 transition-all hover:bg-blue-700",
+                    isLoading && "cursor-not-allowed"
+                  )}
+                >
+                  {isLoading ? <ButtonLoader /> : <span>Sign in</span>}
                 </Button>
               </div>
             </div>
