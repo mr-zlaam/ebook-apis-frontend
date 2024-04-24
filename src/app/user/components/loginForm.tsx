@@ -103,8 +103,7 @@ function LoginForm() {
                     href="/user/register"
                     className="text-blue-500 hover:underline"
                   >
-                    {"  "}
-                    Register
+                    &nbsp; Register
                   </Link>
                 </p>
 
