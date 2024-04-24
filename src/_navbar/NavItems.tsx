@@ -6,6 +6,8 @@ import { DeleteBiscuitCookie } from "@/hooks/useCookies";
 
 const linkClass: string =
   "select-none transition-opacity duration-300 hover:opacity-70";
+
+///  NavItems here *****************
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   const router = useRouter();
 
