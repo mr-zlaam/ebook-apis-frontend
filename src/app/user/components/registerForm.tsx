@@ -52,7 +52,6 @@ function RegisterForm() {
           return router.push("/user/login");
         }, 3000);
       }
-      console.log(response.data);
     } catch (error: any) {
       stopLoading();
       errorMessage(error.response.data.message);

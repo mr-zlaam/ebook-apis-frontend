@@ -6,7 +6,11 @@ export function middleware(request: NextRequest) {
   const biscuitCookieStore = cookies();
   const token = biscuitCookieStore.get("accessToken");
   console.log(token?.value);
-  return NextResponse.redirect(new URL("/user/login", request.url));
+  if (!token?.value || !token?.name || !token) {
+    return NextResponse.redirect(new URL("/user/login", request.url));
+  } else {
+    return NextResponse.next();
+  }
 }
 export const config = {
   matcher: ["/uploadBook/:path*"],

@@ -1,20 +1,21 @@
 "use client";
+import ButtonLoader from "@/_subComponents/buttonLoader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/lable";
+import { BiscuitCookie } from "@/hooks/useCookies";
+import { useLoading } from "@/hooks/useLoading";
+import { useMessage } from "@/hooks/useMessage";
+import { cn } from "@/lib/utils";
 import type { UserLoginTypes } from "@/types";
 import { loginSchema } from "@/validation/postSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
-import {} from "react";
-import { useForm } from "react-hook-form";
-import { BiscuitCookie } from "@/hooks/useCookies";
-import { useMessage } from "@/hooks/useMessage";
-import { useLoading } from "@/hooks/useLoading";
 import axios from "axios";
-import ButtonLoader from "@/_subComponents/buttonLoader";
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 function LoginForm() {
+  const router = useRouter();
   const { errorMessage, successMessage } = useMessage();
   const { isLoading, startLoading, stopLoading } = useLoading();
   const {
@@ -40,12 +41,15 @@ function LoginForm() {
           },
         }
       );
-      stopLoading();
       if (response.data.message === "OK") {
         reset();
         successMessage("login successfully.");
       }
       await BiscuitCookie(response.data?.accessToken);
+      setTimeout(() => {
+        return router.push("/uploadBook");
+      }, 3000);
+      stopLoading();
     } catch (error: any) {
       stopLoading();
       errorMessage(error.response.data.message);
