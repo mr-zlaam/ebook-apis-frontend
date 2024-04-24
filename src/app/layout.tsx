@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@/_themeProvider/theme-provider";
-import { Toaster } from "sonner";
+import Toaster from "@/_subComponents/Toaster";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, Fugaz_One } from "next/font/google";
