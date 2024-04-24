@@ -20,7 +20,6 @@ function LoginForm() {
   const router = useRouter();
   const { errorMessage, successMessage } = useMessage();
   const { isLoading, startLoading, stopLoading } = useLoading();
-  console.log(process.env.BACKEND_URI);
   const {
     register,
     handleSubmit,
