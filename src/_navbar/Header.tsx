@@ -10,7 +10,8 @@ import { usePathname } from "next/navigation";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const shouldHideNavbar = pathname === "/user/login" || "/user/register";
+  const hideLogin = pathname === "/user/login";
+  const hideRegister = pathname === "/user/register";
   const handleShowNavBar = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -22,7 +23,8 @@ function Header() {
       <header
         className={cn(
           "flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow",
-          shouldHideNavbar && "hidden"
+          hideLogin && "hidden",
+          hideRegister && "hidden"
         )}
       >
         <div className="relative">
