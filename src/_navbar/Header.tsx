@@ -10,7 +10,6 @@ import { usePathname } from "next/navigation";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  console.log(pathname);
   const shouldHideNavbar = pathname === "/user/login" || "/user/register";
   const handleShowNavBar = () => {
     setIsMenuOpen((prev) => !prev);

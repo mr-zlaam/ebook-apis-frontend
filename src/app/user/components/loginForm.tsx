@@ -48,7 +48,8 @@ function LoginForm() {
       await BiscuitCookie(response.data?.accessToken);
     } catch (error: any) {
       stopLoading();
-      console.log(error);
+      errorMessage(error.response.data.message);
+      return;
     }
   };
   return (
