@@ -6,8 +6,12 @@ import MobileNavItems from "./MobileNavItems";
 import NavItems from "./NavItems";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/_theme/Theme";
+import { usePathname } from "next/navigation";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  console.log(pathname);
+  const shouldHideNavbar = pathname === "/user/login" || "/user/register";
   const handleShowNavBar = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -18,7 +22,8 @@ function Header() {
     <>
       <header
         className={cn(
-          "flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow "
+          "flex justify-around items-center h-[70px]  sticky top-0 bg-background shadow",
+          shouldHideNavbar && "hidden"
         )}
       >
         <div className="relative">
