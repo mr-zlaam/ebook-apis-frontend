@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/_themeProvider/theme-provider";
+import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, Fugaz_One } from "next/font/google";
@@ -38,7 +39,10 @@ export default function RootLayout({
         >
           <main className=" relative flex flex-col min-h-screen ">
             <Header />
-            <div className="flex-1 flex-grow px-2">{children}</div>
+            <div className="flex-1 flex-grow px-2">
+              {children}
+              <Toaster />
+            </div>
           </main>
         </ThemeProvider>
       </body>

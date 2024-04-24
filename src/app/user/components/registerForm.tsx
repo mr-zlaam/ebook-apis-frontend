@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/lable";
+import { useMessage } from "@/hooks/useMessage";
 import type { UserRegisterTypes } from "@/types";
 import { registerSchema } from "@/validation/postSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,6 +10,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 function RegisterForm() {
+  const { errorMessage, successMessage } = useMessage();
   const {
     register,
     reset,
@@ -34,10 +36,11 @@ function RegisterForm() {
       );
       if (response.data.message === "OK") {
         reset();
+        successMessage("User Registered successfully.");
       }
       console.log(response.data);
     } catch (error: any) {
-      console.log(error.message);
+      errorMessage(error.response.data.message);
     }
   };
   return (
