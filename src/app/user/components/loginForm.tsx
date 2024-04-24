@@ -14,7 +14,9 @@ import axios from "axios";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 function LoginForm() {
+  const [isUserLogin, setIsUserLogin] = useState(false);
   const router = useRouter();
   const { errorMessage, successMessage } = useMessage();
   const { isLoading, startLoading, stopLoading } = useLoading();
@@ -46,18 +48,28 @@ function LoginForm() {
       if (response.data.message === "OK") {
         reset();
         successMessage("login successfully.");
+        setIsUserLogin(true);
       }
       await BiscuitCookie(response.data?.accessToken);
       setTimeout(() => {
         return router.push("/uploadBook");
       }, 3000);
+
       stopLoading();
     } catch (error: any) {
       stopLoading();
       errorMessage(error.response.data.message);
+      setIsUserLogin(false);
       return;
     }
   };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (isUserLogin) {
+        localStorage.setItem("isUserLogined", "true");
+      }
+    }
+  }, [isUserLogin]);
   return (
     <>
       <section className="relative top-24">

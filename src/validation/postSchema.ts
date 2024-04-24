@@ -43,7 +43,5 @@ export const loginSchema: ZodType<UserLoginTypes> = object({
       message: "Please provide valid email",
     })
     .toLowerCase(),
-  password: string()
-    .min(6, { message: "This field requires at least 6 characters" })
-    .max(20, { message: "Password is too long" }),
+  password: string().min(6, { message: "This field is required" }),
 });
