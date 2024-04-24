@@ -42,7 +42,7 @@ function Header() {
           <Logo />
         </div>
         <nav className="hidden z-50 lg:flex lg:self-stretch  gap-10 items-center ">
-          <NavItems />
+          <NavItems handleCloseNavbar={handleCloseNavbar} />
         </nav>
         {!isMenuOpen && (
           <Menu className="inline lg:hidden" onClick={handleShowNavBar} />

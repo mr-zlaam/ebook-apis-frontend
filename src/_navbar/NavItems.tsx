@@ -1,10 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
+function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
+  const router = useRouter();
   const linkClass: string =
     "select-none transition-opacity duration-300 hover:opacity-70";
+  const goToSignInPage = () => {
+    router.push("/user/login");
+    return handleCloseNavbar();
+  };
   return (
     <>
       <Link onClick={handleCloseNavbar} href="/" className={linkClass}>
@@ -24,7 +30,7 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar?: () => void }) {
         About
       </Link>
       <Button
-        onClick={handleCloseNavbar}
+        onClick={goToSignInPage}
         variant="default"
         className="select-none  py-2 text-sm text-white"
       >

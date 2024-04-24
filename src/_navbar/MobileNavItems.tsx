@@ -7,7 +7,7 @@ function MobileNavItems({
   handleCloseNavbar,
 }: {
   className?: string;
-  handleCloseNavbar?: () => void;
+  handleCloseNavbar: () => void;
 }) {
   return (
     <>
