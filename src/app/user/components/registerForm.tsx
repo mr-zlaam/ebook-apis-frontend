@@ -11,10 +11,15 @@ import { registerSchema } from "@/validation/postSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+
+// ********************  Register Form
+
 function RegisterForm() {
   const { errorMessage, successMessage } = useMessage();
   const { isLoading, startLoading, stopLoading } = useLoading();
+  const router = useRouter();
   const {
     register,
     reset,
@@ -43,6 +48,9 @@ function RegisterForm() {
       if (response.data.message === "OK") {
         reset();
         successMessage("User Registered successfully.");
+        setTimeout(() => {
+          return router.push("/user/login");
+        }, 3000);
       }
       console.log(response.data);
     } catch (error: any) {
