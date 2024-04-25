@@ -3,14 +3,27 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { DeleteBiscuitCookie } from "@/hooks/useCookies";
+import { useEffect, useState } from "react";
+import { getCookie } from "cookies-next";
 
+import axios from "axios";
+interface FetchUserResponseType {
+  _id: string;
+  username: string;
+  displayName: string;
+  email: string;
+  createdAt: Date;
+  updateddAt: Date;
+}
 const linkClass: string =
   "select-none transition-opacity duration-300 hover:opacity-70";
 
 ///  NavItems here *****************
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   const router = useRouter();
-
+  const [currentUser, setCurrentUser] = useState<
+    null | FetchUserResponseType[]
+  >(null);
   const goToSignInPage = () => {
     router.push("/user/login");
     return handleCloseNavbar();
@@ -22,7 +35,26 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
     }
     return goToSignInPage();
   };
-
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const user = await axios.get(
+          "http://localhost:5173/api/users/getUsers"
+        );
+        // console.log(user?.data?.data);
+        setCurrentUser(user?.data?.data);
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    };
+    fetchUsers();
+  }, []);
+  const uid = getCookie("uid");
+  // console.log(uid);
+  const isCurrentUserLogin = currentUser?.map((user) => {
+    return user?._id === uid;
+  });
+  console.log(isCurrentUserLogin);
   return (
     <>
       <Link onClick={handleCloseNavbar} href="/" className={linkClass}>
