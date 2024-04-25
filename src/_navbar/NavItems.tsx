@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { DeleteBiscuitCookie } from "@/hooks/useCookies";
-import { useEffect, useState } from "react";
 
 const linkClass: string =
   "select-none transition-opacity duration-300 hover:opacity-70";
@@ -11,7 +10,6 @@ const linkClass: string =
 ///  NavItems here *****************
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   const router = useRouter();
-  const [isUserLogined, setIsUserLogined] = useState(false);
 
   const goToSignInPage = () => {
     router.push("/user/login");
@@ -24,14 +22,7 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
     }
     return goToSignInPage();
   };
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const value = localStorage.getItem("isUserLogined");
-      if (value === "true") {
-        setIsUserLogined(true);
-      }
-    }
-  }, []);
+
   return (
     <>
       <Link onClick={handleCloseNavbar} href="/" className={linkClass}>
@@ -50,23 +41,14 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
       <Link onClick={handleCloseNavbar} href="/about" className={linkClass}>
         About
       </Link>
-      {!isUserLogined ? (
-        <Button
-          onClick={goToSignInPage}
-          variant="default"
-          className="select-none  py-2 text-sm text-white"
-        >
-          Sign In
-        </Button>
-      ) : (
-        <Button
-          onClick={handleLogout}
-          variant="outline"
-          className="select-none  py-2 text-sm text-foreground border-foreground"
-        >
-          Sign Out
-        </Button>
-      )}
+
+      <Button
+        onClick={goToSignInPage}
+        variant="default"
+        className="select-none  py-2 text-sm text-white"
+      >
+        Sign In
+      </Button>
     </>
   );
 }
