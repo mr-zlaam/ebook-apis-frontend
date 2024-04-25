@@ -58,7 +58,12 @@ function LoginForm() {
       stopLoading();
     } catch (error: any) {
       stopLoading();
-      errorMessage(error && "Failed to login due to network problem");
+      return errorMessage(
+        (error.response.data.status >= 400 &&
+          error.response.data.status < 500 &&
+          error.response.data.message) ||
+          "Failed to Login due to network problem"
+      );
       return;
     }
   };
