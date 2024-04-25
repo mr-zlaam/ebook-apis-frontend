@@ -6,25 +6,19 @@ import { DeleteBiscuitCookie } from "@/hooks/useCookies";
 import { useEffect, useState } from "react";
 import { getCookie, deleteCookie } from "cookies-next";
 
-interface FetchUserResponseType {
-  _id: string;
-  username: string;
-  displayName: string;
-  email: string;
-  createdAt: Date;
-  updateddAt: Date;
-}
 const linkClass: string =
   "select-none transition-opacity duration-300 hover:opacity-70";
 
 ///  NavItems here *****************
 function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   const router = useRouter();
-  const [isUserLogined, setIsUserLogined] = useState("");
+  const [isUserLogined, setIsUserLogined] = useState(false);
+
   const goToSignInPage = () => {
     router.push("/user/login");
     return handleCloseNavbar();
   };
+
   const handleLogout = async () => {
     await DeleteBiscuitCookie("accessToken");
     deleteCookie("uid");
@@ -33,9 +27,10 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
   };
 
   useEffect(() => {
-    const uid = getCookie("uid") as string;
-    console.log(uid);
+    const uid = getCookie("uid");
+    setIsUserLogined(uid ? true : false);
   }, []);
+
   return (
     <>
       <Link onClick={handleCloseNavbar} href="/" className={linkClass}>
@@ -55,7 +50,7 @@ function NavItems({ handleCloseNavbar }: { handleCloseNavbar: () => void }) {
         About
       </Link>
 
-      {true ? (
+      {!isUserLogined ? (
         <Button
           onClick={goToSignInPage}
           variant="default"
