@@ -56,7 +56,7 @@ function RegisterForm() {
     } catch (error: any) {
       stopLoading();
       console.log(error);
-      return errorMessage(error.response.data.message || "Registration Failed");
+      return errorMessage(error && "Failed to login due to network problem");
     }
   };
   return (

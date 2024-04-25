@@ -32,7 +32,8 @@ function LoginForm() {
     try {
       startLoading();
       const response = await axios.post(
-        `${process.env.BACKEND_URI}/users/login`,
+        // `${process.env.BACKEND_URI}/users/login`,
+        `http://localhost:5173/api/users/login`,
 
         {
           email,
@@ -58,10 +59,7 @@ function LoginForm() {
       stopLoading();
     } catch (error: any) {
       stopLoading();
-      errorMessage(
-        error.response.data.message &&
-          "Failed to register due to network problem"
-      );
+      errorMessage(error && "Failed to login due to network problem");
       setIsUserLogin(false);
       return;
     }
