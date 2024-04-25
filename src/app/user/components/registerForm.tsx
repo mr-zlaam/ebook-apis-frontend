@@ -31,7 +31,8 @@ function RegisterForm() {
     try {
       startLoading();
       const response = await axios.post(
-        `${process.env.BACKEND_URI}users/register`,
+        // `${process.env.BACKEND_URI}users/register`,
+        `http://localhost:5173/api/users/register`,
         {
           username,
           displayName: fullname,
@@ -54,7 +55,8 @@ function RegisterForm() {
       }
     } catch (error: any) {
       stopLoading();
-      errorMessage(error.response.data.message);
+      console.log(error);
+      return errorMessage(error.response.data.message || "Registration Failed");
     }
   };
   return (

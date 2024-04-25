@@ -33,6 +33,7 @@ function LoginForm() {
       startLoading();
       const response = await axios.post(
         `${process.env.BACKEND_URI}/users/login`,
+
         {
           email,
           password,
@@ -57,7 +58,10 @@ function LoginForm() {
       stopLoading();
     } catch (error: any) {
       stopLoading();
-      errorMessage(error.response.data.message);
+      errorMessage(
+        error.response.data.message &&
+          "Failed to register due to network problem"
+      );
       setIsUserLogin(false);
       return;
     }
@@ -119,9 +123,11 @@ function LoginForm() {
                 </p>
 
                 <Button
+                  disabled={isLoading}
                   className={cn(
                     "text-white w-full bg-blue-500 duration-200 transition-all hover:bg-blue-700",
-                    isLoading && "cursor-not-allowed hover:bg-blue-500"
+                    isLoading &&
+                      "cursor-not-allowed bg-blue-800/50 hover:bg-blue-800/50"
                   )}
                 >
                   {isLoading ? <ButtonLoader /> : <span>Sign in</span>}
