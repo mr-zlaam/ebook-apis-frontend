@@ -14,6 +14,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { setCookie } from "cookies-next";
 function LoginForm() {
   const router = useRouter();
   const { errorMessage, successMessage } = useMessage();
@@ -44,7 +45,8 @@ function LoginForm() {
           },
         }
       );
-      if (response.data.message === "OK") {
+      if (response.data?.message === "OK") {
+        setCookie("uid", response.data?.uid);
         reset();
         successMessage("login successfully.");
       }
