@@ -46,6 +46,7 @@ function RegisterForm() {
         }
       );
       stopLoading();
+      console.log(response);
       if (response.data.message === "OK") {
         reset();
         successMessage("User Registered successfully.");
