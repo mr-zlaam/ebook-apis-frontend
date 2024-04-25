@@ -14,9 +14,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 function LoginForm() {
-  const [isUserLogin, setIsUserLogin] = useState(false);
   const router = useRouter();
   const { errorMessage, successMessage } = useMessage();
   const { isLoading, startLoading, stopLoading } = useLoading();
@@ -49,7 +47,6 @@ function LoginForm() {
       if (response.data.message === "OK") {
         reset();
         successMessage("login successfully.");
-        setIsUserLogin(true);
       }
       await BiscuitCookie(response.data?.accessToken);
       setTimeout(() => {
@@ -60,17 +57,10 @@ function LoginForm() {
     } catch (error: any) {
       stopLoading();
       errorMessage(error && "Failed to login due to network problem");
-      setIsUserLogin(false);
       return;
     }
   };
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (isUserLogin) {
-        localStorage.setItem("isUserLogined", "true");
-      }
-    }
-  }, [isUserLogin]);
+
   return (
     <>
       <section className="relative top-24">
