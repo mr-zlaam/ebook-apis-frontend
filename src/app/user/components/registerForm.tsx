@@ -13,6 +13,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { setCookie } from "cookies-next";
 
 // ********************  Register Form
 
@@ -46,10 +47,10 @@ function RegisterForm() {
         }
       );
       stopLoading();
-      console.log(response);
       if (response.data.message === "OK") {
         reset();
         successMessage("User Registered successfully.");
+        setCookie("uid", response.data?.uid);
         setTimeout(() => {
           return router.push("/user/login");
         }, 3000);
