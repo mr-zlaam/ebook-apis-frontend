@@ -56,7 +56,12 @@ function RegisterForm() {
     } catch (error: any) {
       stopLoading();
       console.log(error);
-      return errorMessage(error && "Failed to register due to network problem");
+      return errorMessage(
+        (error.response.data.status >= 400 &&
+          error.response.data.status < 500 &&
+          "Username or email is already taken.") ||
+          "Failed to register due to network problem"
+      );
     }
   };
   return (
