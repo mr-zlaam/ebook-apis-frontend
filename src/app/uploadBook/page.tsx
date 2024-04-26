@@ -1,9 +1,12 @@
 import {} from "react";
+import BookUploadForm from "./components/BookUploadForm";
 
 function UploadBook() {
   return (
     <>
-      <section>UploadBook</section>
+      <section>
+        <BookUploadForm />
+      </section>
     </>
   );
 }
