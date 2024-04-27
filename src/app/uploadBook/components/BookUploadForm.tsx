@@ -2,9 +2,10 @@
 import {} from "react";
 
 function BookUploadForm() {
+  const handleUploadBook = async () => {};
   return (
     <>
-      <section>BookUploadForm</section>
+      <form onSubmit={handleUploadBook}></form>
     </>
   );
 }
